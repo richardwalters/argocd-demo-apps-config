@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apples-service
+spec:
+  selector:
+    matchLabels:
+      app: apples-service
+  template:
+    metadata:
+      labels:
+        app: apples-service
+    spec:
+      containers:
+        - name: app
+          image: "apples-service:latest"
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
