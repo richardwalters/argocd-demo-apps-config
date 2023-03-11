@@ -1,0 +1,41 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      service-name:
+        required: true
+      tag-name:
+        required: true
+
+jobs:
+  deploy-to-dev:
+    runs-on: ubuntu-latest
+    environment: dev
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Deploy
+        uses: ./.github/templates/deploy
+        with:
+          env: dev
+          service-name: ${{ inputs.service-name }}
+          tag-name: ${{ inputs.tag-name }}
+
+  deploy-to-prod:
+    runs-on: ubuntu-latest
+    environment: prod
+    needs: deploy-to-dev
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Deploy
+        uses: ./.github/templates/deploy
+        with:
+          env: prod
+          service-name: ${{ inputs.service-name }}
+          tag-name: ${{ inputs.tag-name }}

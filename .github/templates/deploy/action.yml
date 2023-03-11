@@ -1,0 +1,28 @@
+name: deploy
+
+inputs:
+  env:
+    required: true
+  service-name:
+    required: true
+  tag-name:
+    required: true
+
+runs:
+  using: "composite"
+
+  steps:
+    - name: Set git config
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+
+    - name: Update image
+      run: |
+        cd overlays/${{ inputs.env }}
+        kustomize edit set image ${{ inputs.service-name }}=ghcr.io/argocd-demo-${{ inputs.service-name }}:${{ inputs.tag-name }}
+
+    - name: Push changes
+      run: |
+        git commit -am "[${{ inputs.env }}] update ${{ inputs.service-name }} image to ${{ inputs.tag-name }}"
+        git push
