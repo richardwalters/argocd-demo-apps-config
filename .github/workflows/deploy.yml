@@ -5,6 +5,9 @@ on:
     inputs:
       service-name:
         required: true
+        type: choice
+        options:
+          - apples-service
       tag-name:
         required: true
 
