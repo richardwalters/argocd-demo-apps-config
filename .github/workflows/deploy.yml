@@ -1,5 +1,7 @@
 name: Deploy
 
+run-name: Deploy ${{ inputs.service-name }} ${{ inputs.tag-name }}
+
 on:
   workflow_dispatch:
     inputs:
