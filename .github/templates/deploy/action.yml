@@ -18,6 +18,11 @@ runs:
         git config user.name github-actions
         git config user.email github-actions@github.com
 
+    - name: Pull changes
+      shell: bash
+      run: |
+        git pull
+
     - name: Update image
       shell: bash
       run: |
