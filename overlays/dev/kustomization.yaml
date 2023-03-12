@@ -12,4 +12,4 @@ patchesStrategicMerge:
 images:
 - name: apples-service
   newName: ghcr.io/argocd-demo-apples-service
-  newTag: 1.0.27
+  newTag: 1.0.29
