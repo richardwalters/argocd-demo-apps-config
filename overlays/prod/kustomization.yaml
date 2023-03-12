@@ -10,5 +10,5 @@ patchesStrategicMerge:
 - env-vars.yaml
 images:
 - name: apples-service
-  newName: apples-service
-  newTag: 1.0.0
+  newName: ghcr.io/argocd-demo-apples-service
+  newTag: 1.0.29
