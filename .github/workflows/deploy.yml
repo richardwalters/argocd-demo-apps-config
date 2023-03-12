@@ -34,6 +34,8 @@ jobs:
         with:
           env: dev
           service-name: ${{ inputs.service-name }}
+          registry: ${{ inputs.registry }}
+          image-name: ${{ inputs.image-name }}
           tag-name: ${{ inputs.tag-name }}
 
   deploy-to-prod:
