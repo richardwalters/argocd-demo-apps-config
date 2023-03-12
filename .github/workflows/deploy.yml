@@ -10,6 +10,11 @@ on:
         type: choice
         options:
           - apples-service
+      registry:
+        required: false
+        default: ghcr.io
+      image-name:
+        required: true
       tag-name:
         required: true
 
@@ -47,4 +52,6 @@ jobs:
         with:
           env: prod
           service-name: ${{ inputs.service-name }}
+          registry: ${{ inputs.registry }}
+          image-name: ${{ inputs.image-name }}
           tag-name: ${{ inputs.tag-name }}

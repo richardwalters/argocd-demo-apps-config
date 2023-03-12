@@ -5,6 +5,10 @@ inputs:
     required: true
   service-name:
     required: true
+  registry:
+    required: true
+  image-name:
+    required: true
   tag-name:
     required: true
 
@@ -27,7 +31,7 @@ runs:
       shell: bash
       run: |
         cd overlays/${{ inputs.env }}
-        kustomize edit set image ${{ inputs.service-name }}=ghcr.io/argocd-demo-${{ inputs.service-name }}:${{ inputs.tag-name }}
+        kustomize edit set image ${{ inputs.service-name }}=${{ inputs.registry }}/${{ inputs.image-name }}:${{ inputs.tag-name }}
 
     - name: Push changes
       shell: bash
