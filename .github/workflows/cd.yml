@@ -1,4 +1,4 @@
-name: Deploy
+name: CD
 
 run-name: Deploy ${{ inputs.service-name }} ${{ inputs.tag-name }}
 
